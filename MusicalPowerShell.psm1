@@ -51,3 +51,36 @@ function Invoke-Note {
         [System.Console]::Beep($NoteFrequency,$NoteTime)
     }        
 }
+
+function Invoke-Melody {
+    param (
+        [Parameter(Mandatory)]
+        [ValidateSet("C","C#","D","E","F","F#","G","G#","A","A#","B","Rest")]    
+        [string[]]$NoteNameList,
+        
+        [ValidateSet("Sixteenth","Eighth","Quarter","Half","Whole")]
+        [string[]]$NoteLengthList,
+
+        [int[]]$NoteOctaveList,
+        
+        [int]$Tempo = 120
+    )
+
+    $MelodyNoteCount = $NoteNameList.Length
+
+    for ($i = 0; $i -lt $MelodyNoteCount; $i++) {
+        try {
+            $NoteOctave = $NoteOctaveList[$i]
+        } catch {
+            $NoteOctave = 4
+        }
+
+        try {
+            $NoteLength = $NoteLengthList[$i]
+        } catch {
+            $NoteLength = "Quarter"        
+        }
+
+        Invoke-Note -NoteName $NoteNameList[$i] -NoteLength $NoteLength -Octave $NoteOctave -Tempo $Tempo
+    }
+}
