@@ -4,7 +4,7 @@ function Invoke-Note {
         [ValidateSet("C","C#","D","E","F","F#","G","G#","A","A#","B","Rest")]
         [string]$NoteName,
         
-        [ValidateSet("Eighth","Quarter","Half","Whole")]
+        [ValidateSet("Sixteenth","Eighth","Quarter","Half","Whole")]
         [string]$NoteLength = "Quarter",
         
         [ValidateRange(2,9)]
@@ -34,6 +34,7 @@ function Invoke-Note {
     }
 
     switch ($NoteLength) {
+        "Sixteenth" { $NoteTime = $MeasureTimeInMilliseconds / 16; break }
         "Eighth"    { $NoteTime = $MeasureTimeInMilliseconds / 8; break }
         "Quarter"   { $NoteTime = $MeasureTimeInMilliseconds / 4; break }
         "Half"      { $NoteTime = $MeasureTimeInMilliseconds / 2; break }
