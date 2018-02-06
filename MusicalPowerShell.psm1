@@ -84,3 +84,7 @@ function Invoke-Melody {
         Invoke-Note -NoteName $NoteNameList[$i] -NoteLength $NoteLength -Octave $NoteOctave -Tempo $Tempo
     }
 }
+
+function Invoke-CompletionMelody {
+    Invoke-Melody -NoteNameList C,B,B,E -NoteLengthList Quarter,Eighth,Eighth,Whole -NoteOctaveList 5,4,4,5 -Tempo 80
+}
