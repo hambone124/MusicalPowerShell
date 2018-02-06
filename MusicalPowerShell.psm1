@@ -14,7 +14,7 @@ function Invoke-Note {
         [int]$Tempo = 120
     )
 
-    $MeasureTimeInMilliseconds = $Tempo / 60 * 1000
+    $MeasureTimeInMilliseconds = 60 / $Tempo * 1000
 
     switch ($NoteName) {
         "C"     { $FundamentalFrequency = 16.35; break }
